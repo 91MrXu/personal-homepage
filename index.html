@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>个人主页</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --surface-hover: #242424;
+    --text: #e8e6e3;
+    --text-secondary: #989898;
+    --text-muted: #6b6b6b;
+    --accent: #64ff8a;
+    --accent-dim: rgba(100, 255, 138, 0.08);
+    --border: rgba(255, 255, 255, 0.06);
+    --radius: 8px;
+    --max-width: 720px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 120px 0 80px;
+  }
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero h1 span {
+    color: var(--accent);
+  }
+  .hero .role {
+    font-size: 18px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 24px;
+  }
+  .hero .bio {
+    font-size: 16px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    line-height: 1.8;
+  }
+
+  /* Section */
+  .section {
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+  }
+  .section h2 {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  /* Work / Projects */
+  .project-list { display: flex; flex-direction: column; gap: 20px; }
+  .project {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px 20px;
+    background: var(--surface);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    transition: background 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .project:hover { background: var(--surface-hover); }
+  .project .title {
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .project .desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  .project .meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding-left: 16px;
+  }
+  .project .tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: var(--accent-dim);
+    color: var(--accent);
+    margin-right: 6px;
+    margin-top: 6px;
+  }
+
+  /* Skills */
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .skill-tag {
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    transition: all 0.2s;
+  }
+  .skill-tag:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+    border-color: rgba(255,255,255,0.12);
+  }
+
+  /* Contact */
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--accent); }
+  .contact-link .icon {
+    width: 20px;
+    height: 20px;
+    opacity: 0.5;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
+  /* Nav */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    padding: 16px 24px;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(12px);
+    background: rgba(15, 15, 15, 0.8);
+  }
+  .nav .logo {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text);
+  }
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    .hero { padding: 100px 0 60px; }
+    .hero h1 { font-size: 36px; }
+    .hero .role { font-size: 16px; }
+    .project { flex-direction: column; }
+    .project .meta { padding-left: 0; padding-top: 8px; }
+    .nav-links { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="logo">Rui Xu</div>
+    <ul class="nav-links">
+      <li><a href="#about">关于</a></li>
+      <li><a href="#work">项目</a></li>
+      <li><a href="#skills">技能</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" id="about">
+      <h1>你好，我是 <span>Ray</span></h1>
+      <p class="role">全栈工程师 · 产品思考者</p>
+      <p class="bio">
+        热衷于构建优雅、实用的数字产品。相信好的设计源于对细节的关注和
+        对用户体验的深刻理解。目前专注在 Web 技术与 AI 工具的结合点上
+        探索新的可能性。
+      </p>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="work">
+      <h2>精选项目</h2>
+      <div class="project-list">
+        <a href="#" class="project">
+          <div>
+            <div class="title">Codex 智能编程助手</div>
+            <div class="desc">AI 驱动的代码生成与理解平台，支持多语言、多框架</div>
+            <span class="tag">AI</span><span class="tag">TypeScript</span>
+          </div>
+          <div class="meta">2025</div>
+        </a>
+        <a href="#" class="project">
+          <div>
+            <div class="title">DataViz 可视化引擎</div>
+            <div class="desc">轻量级数据可视化库，支持交互式图表与实时数据流</div>
+            <span class="tag">可视化</span><span class="tag">React</span>
+          </div>
+          <div class="meta">2024</div>
+        </a>
+        <a href="#" class="project">
+          <div>
+            <div class="title">FlowBoard 协作白板</div>
+            <div class="desc">实时多人协作的在线白板工具，支持自由画布与结构化文档</div>
+            <span class="tag">协作</span><span class="tag">WebSocket</span>
+          </div>
+          <div class="meta">2024</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <h2>技术栈</h2>
+      <div class="skills">
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Next.js</span>
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Rust</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">GraphQL</span>
+        <span class="skill-tag">Tailwind CSS</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Figma</span>
+        <span class="skill-tag">AI/LLM</span>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <h2>联系方式</h2>
+      <div class="contact-links">
+        <a href="mailto:ray@example.com" class="contact-link">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          ray@example.com
+        </a>
+        <a href="https://github.com" class="contact-link" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://twitter.com" class="contact-link" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X / Twitter
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer container">
+      <p>&copy; 2025 Rui Xu. Built with care.</p>
+    </footer>
+  </main>
+</body>
+</html>
