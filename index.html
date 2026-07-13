@@ -80,6 +80,30 @@
     margin-bottom: 24px;
   }
 
+  .hero-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    opacity: 0.9;
+  }
+  .service-img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-right: 16px;
+  }
+  .project {
+    align-items: center;
+  }
+  @media (max-width: 600px) {
+    .hero-img { height: 180px; margin-bottom: 24px; }
+    .service-img { width: 60px; height: 48px; margin-right: 12px; }
+  }
+
   /* Work / Projects */
   .project-list { display: flex; flex-direction: column; gap: 20px; }
   .project {
@@ -227,6 +251,7 @@
   <main class="container">
     <!-- Hero -->
     <section class="hero" id="about">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1434030216411-0b793f4b82f8?w=1200&q=80&fit=crop" alt="Study desk">
       <h1>你好，我是 <span>Ray</span></h1>
       <p class="role">小学全科辅导教师 · 晚辅导专家</p>
       <p class="bio">
@@ -242,7 +267,7 @@
       <div class="project-list">
         <div class="project">
           <div>
-            <div class="title">晚辅导</div>
+            <img class="service-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&fit=crop" alt=""><div><div class="title">晚辅导</div>
             <div class="desc">周一至周五晚间作业辅导，语数外全科覆盖，高效完成当天任务并针对性查漏补缺</div>
             <span class="tag">核心服务</span><span class="tag">1-6年级</span>
           </div>
@@ -250,7 +275,7 @@
         </div>
         <div class="project">
           <div>
-            <div class="title">学科强化</div>
+            <img class="service-img" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&q=80&fit=crop" alt=""><div><div class="title">学科强化</div>
             <div class="desc">针对薄弱科目一对一深入辅导，夯实基础、突破难点，稳步提升成绩</div>
             <span class="tag">语文</span><span class="tag">数学</span><span class="tag">英语</span>
           </div>
@@ -258,7 +283,7 @@
         </div>
         <div class="project">
           <div>
-            <div class="title">考前冲刺</div>
+            <img class="service-img" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&q=80&fit=crop" alt=""><div><div class="title">考前冲刺</div>
             <div class="desc">期中期末专项复习，梳理知识体系，模拟实战，帮助孩子从容应对考试</div>
             <span class="tag">考前密集</span>
           </div>
@@ -291,15 +316,15 @@
         <a href="mailto:rayxu9191@gmail.com" class="contact-link">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           rayxu9191@gmail.com
-        </a>
+        </div></div>
         <a href="https://github.com" class="contact-link" target="_blank" rel="noopener">
           <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
           GitHub
-        </a>
+        </div></div>
         <a href="https://twitter.com" class="contact-link" target="_blank" rel="noopener">
           <svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           X / Twitter
-        </a>
+        </div></div>
       </div>
     </section>
 
